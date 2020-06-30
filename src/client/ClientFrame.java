@@ -57,9 +57,9 @@ public class ClientFrame extends JFrame {
 	public void init() {
 		
 		try {
-			ta.append("서버와 연결중...");
-			socket = new Socket("localhost",9999);
-			ta.append("서버와 연결 성공");
+			ta.append("서버와 연결중...\n");
+			socket = new Socket("localhost",9997);
+			ta.append("서버와 연결 성공\n\n");
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));	
 
@@ -80,7 +80,7 @@ public class ClientFrame extends JFrame {
 			while(true) {
 				try {
 					String receiveMsg = in.readLine();
-					ta.append(receiveMsg);
+					ta.append(receiveMsg+"\n");
 				} catch (IOException e) {
 					errorHandler(e.getMessage());
 				}
