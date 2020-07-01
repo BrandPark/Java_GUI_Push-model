@@ -28,6 +28,7 @@ public class ClientFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container c = getContentPane();
 		
+		ta.setEnabled(false);
 		tf.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -49,6 +50,7 @@ public class ClientFrame extends JFrame {
 	
 		setSize(300,500);
 		setVisible(true);
+		
 		init();
 		
 		Thread th = new Thread(new ReceiverThread());
@@ -60,6 +62,9 @@ public class ClientFrame extends JFrame {
 			ta.append("서버와 연결중...\n");
 			socket = new Socket("localhost",9997);
 			ta.append("서버와 연결 성공\n\n");
+			ta.append("*******************************************\n");
+			ta.append("*************Chatting Program**************\n");
+			ta.append("*******************************************\n\n");
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));	
 
